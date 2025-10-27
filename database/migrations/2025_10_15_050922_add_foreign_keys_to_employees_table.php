@@ -25,6 +25,8 @@ return new class extends Migration
                     ->on('positions')
                     ->onDelete('cascade');
         });
+
+        
     }
 
     public function down(): void
