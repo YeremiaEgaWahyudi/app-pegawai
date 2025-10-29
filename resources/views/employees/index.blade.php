@@ -6,7 +6,7 @@
 
     <div class="header-data">
         <h2 class="title-data">Daftar Pegawai</h2>
-        <a href="{{ route('employees.create') }}" class="tambah-data">Tambah Pegawai</a>
+        <a href="{{ route('employees.create') }}" class="tambah-data material-symbols-outlined">add</a>
     </div>
 
     <div class="data-scroll-container">
@@ -18,8 +18,8 @@
                 <th>Jabatan</th>
                 <th>Email</th>
                 <th>Nomor Telepon</th>
-                <th>Tanggal Lahir</th>
-                <th>Alamat</th>
+                <!-- <th>Tanggal Lahir</th>
+                <th>Alamat</th> -->
                 <th>Tanggal Masuk</th>
                 <th>Status</th>
                 <th>Aksi</th>
@@ -33,8 +33,8 @@
                 <td>{{ $employee->position->nama_jabatan }}</td>
                 <td>{{ $employee->email }}</td>
                 <td>{{ $employee->nomor_telepon }}</td>
-                <td>{{ $employee->tanggal_lahir }}</td>
-                <td>{{ $employee->alamat }}</td>
+                <!-- <td>{{ $employee->tanggal_lahir }}</td>
+                <td>{{ $employee->alamat }}</td> -->
                 <td>{{ $employee->tanggal_masuk }}</td>
                 <td>{{ $employee->status }}</td>
                 <td>
