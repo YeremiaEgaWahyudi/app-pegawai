@@ -32,37 +32,37 @@
         <nav class="sidebar-nav" aria-label="Main navigation">
             <ul class="sidebar-menu">
                 <li>
-                    <a href="{{ route('dashboard') }}" class="sidebar-link">
+                    <a href="{{ route('dashboard') }}" class="sidebar-link {{ Request::is('/') || Request::is('dashboard*') ? 'active' : '' }}" @if(Request::is('/') || Request::is('dashboard*')) aria-current="page" @endif>
                         <span class="sidebar-icon material-symbols-outlined">dashboard</span>
                         <span class="sidebar-label">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/employees') }}" class="sidebar-link">
+                    <a href="{{ url('/employees') }}" class="sidebar-link {{ Request::is('employees*') ? 'active' : '' }}" @if(Request::is('employees*')) aria-current="page" @endif>
                         <span class="sidebar-icon material-symbols-outlined">person</span>
                         <span class="sidebar-label">Employee</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/departments') }}" class="sidebar-link">
+                    <a href="{{ url('/departments') }}" class="sidebar-link {{ Request::is('departments*') ? 'active' : '' }}" @if(Request::is('departments*')) aria-current="page" @endif>
                         <span class="sidebar-icon material-symbols-outlined">domain</span>
                         <span class="sidebar-label">Department</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/positions') }}" class="sidebar-link">
+                    <a href="{{ url('/positions') }}" class="sidebar-link {{ Request::is('positions*') ? 'active' : '' }}" @if(Request::is('positions*')) aria-current="page" @endif>
                         <span class="sidebar-icon material-symbols-outlined">work</span>
                         <span class="sidebar-label">Position</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/attendances') }}" class="sidebar-link">
+                    <a href="{{ url('/attendances') }}" class="sidebar-link {{ Request::is('attendances*') ? 'active' : '' }}" @if(Request::is('attendances*')) aria-current="page" @endif>
                         <span class="sidebar-icon material-symbols-outlined">event_note</span>
                         <span class="sidebar-label">Attendance</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/salaries') }}" class="sidebar-link">
+                    <a href="{{ url('/salaries') }}" class="sidebar-link {{ Request::is('salaries*') ? 'active' : '' }}" @if(Request::is('salaries*')) aria-current="page" @endif>
                         <span class="sidebar-icon material-symbols-outlined">paid</span>
                         <span class="sidebar-label">Salary</span>
                     </a>

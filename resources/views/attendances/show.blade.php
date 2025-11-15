@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label>Status</label>
                 <div class="detail-value">
-                    <span style="display: inline-block; background-color: {{ $attendance->status_absensi == 'hadir' ? '#059669' : ($attendance->status_absensi == 'sakit' ? '#f59e0b' : '#dc2626') }} ; color: white; padding: 0.25rem 0.75rem; border-radius: 0.25rem;">
+                    <span class="{{ $attendance->status_absensi == 'hadir' ? 'badge-success' : ($attendance->status_absensi == 'sakit' ? 'badge-warning' : 'badge-error') }}">
                         {{ ucfirst($attendance->status_absensi) }}
                     </span>
                 </div>
