@@ -5,11 +5,12 @@
 <div class="data-container">
     <div class="header-data">
         <h2 class="title-data">Daftar Presensi</h2>
-        <a href="{{ route('attendances.create') }}" class="tambah-data material-symbols-outlined">add</a>
+        <a href="{{ route('attendances.create') }}" class="tambah-data material-symbols-outlined"
+            title="Tambah Presensi">add</a>
     </div>
 
     <div class="data-scroll-container">
-        <table class="data-table" style="min-width: 100px;">
+        <table class="data-table">
             <thead>
                 <tr>
                     <th>Karyawan</th>
@@ -21,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($attendances as $att)
+                @forelse($attendances as $att)
                 <tr>
                     <td>{{ $att->employee->nama_lengkap ?? 'N/A' }}</td>
                     <td>{{ $att->tanggal }}</td>
@@ -36,17 +37,24 @@
                             <a href="{{ route('attendances.edit', $att->id) }}" title="Edit">
                                 <span class="material-symbols-outlined">edit</span>
                             </a>
-                            <form action="{{ route('attendances.destroy', $att->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('attendances.destroy', $att->id) }}" method="POST"
+                                style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Yakin ingin menghapus presensi {{ $att->employee->nama_lengkap }}?')" title="Hapus">
+                                <button type="submit"
+                                    onclick="return confirm('Yakin ingin menghapus presensi {{ $att->employee->nama_lengkap }}?')"
+                                    title="Hapus">
                                     <span class="material-symbols-outlined">delete</span>
                                 </button>
                             </form>
                         </div>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="6" class="empty-state">Tidak ada data presensi</td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
@@ -54,7 +62,5 @@
     <div class="pagination-links">
         {{ $attendances->links() }}
     </div>
-
 </div>
-
 @endsection

@@ -3,55 +3,80 @@
 @section('content')
 
 <div class="form-container">
-    <h2 class="form-header-title">Detail Pegawai</h2>
+    <div class="form-header">
+        <h2 class="form-header-title">Detail Pegawai</h2>
+        <p class="form-subtitle">Informasi lengkap pegawai: {{ $employee->nama_lengkap }}</p>
+    </div>
     <div class="form-grid-layout">
-            <div class="form-group span-2">
-                <label for="nama_lengkap">Nama Lengkap</label>
-                <div class="detail-value">{{ old('nama_lengkap', $employee->nama_lengkap) }}</div>
+        <!-- Informasi Personal -->
+        <fieldset class="form-section">
+            <legend class="section-title">Informasi Personal</legend>
+
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <div class="detail-value">{{ $employee->nama_lengkap }}</div>
             </div>
 
             <div class="form-group">
-                <label for="email">Email</label>
-                <div class="detail-value">{{ old('email', $employee->email) }}</div>
-            </div>
-            <div class="form-group">
-                <label for="nomor_telepon">Nomor Telepon :</label>
-                <div class="detail-value">{{ old('nomor_telepon', $employee->nomor_telepon) }}</div>
+                <label>Email</label>
+                <div class="detail-value">{{ $employee->email }}</div>
             </div>
 
             <div class="form-group">
-                <label for="tanggal_lahir">Tanggal Lahir :</label>
-                <div class="detail-value">{{ old('tanggal_lahir', $employee->tanggal_lahir) }}</div>
-            </div>
-            <div class="form-group">
-                <label for="tanggal_masuk">Tanggal Masuk :</label>
-                <div class="detail-value">{{ old('tanggal_masuk', $employee->tanggal_masuk) }}</div>
-            </div>
-
-            <div class="form-group span-2">
-                <label for="alamat">Alamat :</label>
-                <div class="detail-value">{{ old('alamat', $employee->alamat) }}</div>
+                <label>Nomor Telepon</label>
+                <div class="detail-value">{{ $employee->nomor_telepon }}</div>
             </div>
 
             <div class="form-group">
-                <label for="departemen_id">Departemen :</label>
+                <label>Tanggal Lahir</label>
+                <div class="detail-value">{{ $employee->tanggal_lahir ? \Carbon\Carbon::parse($employee->tanggal_lahir)->format('d-m-Y') : '-' }}</div>
+            </div>
+
+            <div class="form-group">
+                <label>Alamat</label>
+                <div class="detail-value">{{ $employee->alamat ?? '-' }}</div>
+            </div>
+        </fieldset>
+
+        <!-- Informasi Pekerjaan -->
+        <fieldset class="form-section">
+            <legend class="section-title">Informasi Pekerjaan</legend>
+
+            <div class="form-group">
+                <label>Departemen</label>
                 <div class="detail-value">{{ $employee->department->nama_departmen }}</div>
             </div>
+
             <div class="form-group">
-                <label for="jabatan_id">Jabatan :</label>
+                <label>Jabatan</label>
                 <div class="detail-value">{{ $employee->position->nama_jabatan }}</div>
             </div>
 
             <div class="form-group">
-                <label for="status">Status :</label>
-                <div class="detail-value">{{ $employee->status }}</div>
+                <label>Tanggal Masuk</label>
+                <div class="detail-value">{{ \Carbon\Carbon::parse($employee->tanggal_masuk)->format('d-m-Y') }}</div>
             </div>
-            <div class="form-group" style="justify-content: flex-end; ">
-                <div style="text-align: right;">
-                    <a href="{{ route('employees.index') }}" class="btn-secondary">Kembali</a>
-                    <a href="{{ route('employees.edit', $employee->id) }}" class="btn-primary">Edit</a>
+
+            <div class="form-group">
+                <label>Status</label>
+                <div class="detail-value">
+                    <span class="{{ $employee->status == 'aktif' ? 'badge-success' : 'badge-error' }}">
+                        {{ ucfirst($employee->status) }}
+                    </span>
                 </div>
             </div>
+        </fieldset>
+
+        <div class="form-actions span-2" style="grid-column: span 2;">
+            <a href="{{ route('employees.index') }}" class="btn-secondary">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Kembali
+            </a>
+            <a href="{{ route('employees.edit', $employee->id) }}" class="btn-primary">
+                <span class="material-symbols-outlined">edit</span>
+                Edit
+            </a>
         </div>
+    </div>
 </div>
 @endsection
