@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('master')
+@section('title', 'Detail Pegawai')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Pegawai</title>
-</head>
-
-<body>
-    <h1>Detail Pegawai</h1>
-    <table border="1" cellpadding="8" cellspacing="0">
+<div class="form-container">
+    <h2 class="form-header-title">Detail Pegawai</h2>
+    <table class="detail-table">
         <tr>
             <th>Nama Lengkap</th>
             <td>{{ $employee->nama_lengkap }}</td>
@@ -35,10 +30,25 @@
             <td>{{ $employee->tanggal_masuk }}</td>
         </tr>
         <tr>
+            <th>Departemen</th>
+            <td>{{ $employee->department->nama_departmen }}</td>
+        </tr>
+        <tr>
+            <th>Jabatan</th>
+            <td>{{ $employee->position->nama_jabatan }}</td>
+        </tr>
+        <tr>
+            <th>Gaji Pokok</th>
+            <td>Rp{{ number_format($employee->position->gaji_pokok, 0, ',', '.') }}</td>
+        </tr>
+        <tr>
             <th>Status</th>
             <td>{{ $employee->status }}</td>
         </tr>
     </table>
-</body>
 
-</html>
+    <div style="text-align: right; margin-top: 1.5rem; margin-bottom: 0.5rem;">
+        <a href="{{ route('employees.index') }}" class="btn-secondary">Kembali</a>
+    </div>
+</div>
+@endsection
