@@ -6,7 +6,7 @@
 
     <div class="header-data">
         <h2 class="title-data">Daftar Jabatan</h2>
-        <a href="{{ route('positions.create') }}" class="tambah-data">Tambah Jabatan</a>
+        <a href="{{ route('positions.create') }}" class="tambah-data material-symbols-outlined">add</a>
     </div>
 
     <div class="data-scroll-container">

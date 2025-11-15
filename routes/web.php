@@ -7,9 +7,9 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\SalaryController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('employees');
-});
+// Route::get('/', function () {
+//     return view('employees');
+// });
 
 Route::get('/', [EmployeeController::class, 'index']);
 

@@ -5,7 +5,7 @@
 <div class="data-container">
     <div class="header-data">
         <h2 class="title-data">Daftar Presensi</h2>
-        <a href="{{ route('attendances.create') }}" class="tambah-data">Catat Absensi Baru</a>
+        <a href="{{ route('attendances.create') }}" class="tambah-data material-symbols-outlined">add</a>
     </div>
 
     <div class="data-scroll-container">

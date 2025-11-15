@@ -5,7 +5,11 @@
 <div class="data-container">
     <div class="header-data">
         <h2 class="title-data">Daftar Departemen</h2>
+<<<<<<< HEAD
         <a href="{{ route('departments.create') }}" class="tambah-data">Tambah Departemen</a>
+=======
+        <a href="{{ route('departments.create') }}" class="tambah-data material-symbols-outlined">add</a>
+>>>>>>> 966aa365a2425a0f1f75578ed8808def2505a136
     </div>
 
     <div class="data-scroll-container">
