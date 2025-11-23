@@ -62,8 +62,10 @@
         </table>
     </div>
 
+    @if($employees->hasPages())
     <div class="pagination-links">
         {{ $employees->links() }}
     </div>
+    @endif
 </div>
 @endsection

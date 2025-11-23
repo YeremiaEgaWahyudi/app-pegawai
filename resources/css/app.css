@@ -230,7 +230,7 @@
     border-radius: 8px;
     box-shadow: 0 1px 6px rgba(0, 61, 130, 0.08);
     max-width: 1000px;
-    margin: 2.5rem auto;
+    margin: 0 auto;
     border: 1px solid #d4e4f7;
 }
 .form-header {
@@ -351,10 +351,8 @@
     justify-content: flex-end;
     align-items: center;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     grid-column: span 2;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e5e7eb;
 }
 
 /* Status badges */
@@ -487,12 +485,14 @@
     overflow-y: auto;
     overflow-x: auto;
     margin-top: 0.5rem;
+    border-radius: 5px;
+    border-color: #003d82;
 }
 .data-table {
     width: 100%;
     border-collapse: collapse;
     min-width: 800px;
-    background: #fff;
+    background: rgb(189 219 254 / 18%);
     font-size: 0.9rem;
 }
 .data-table th {
@@ -1166,9 +1166,9 @@
     bottom: 0;
     left: 200px;
     right: 0;
-    background: #001f4d;
-    color: #b3d9e8;
-    padding: 0.5rem 1rem;
+    /* background: #003d82; */
+    color: #003d82;
+    padding: 1rem 1rem;
     text-align: right;
     transition: left 0.25s ease-in-out;
     z-index: 100;

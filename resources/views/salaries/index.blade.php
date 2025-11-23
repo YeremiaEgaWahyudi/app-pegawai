@@ -59,8 +59,10 @@
         </table>
     </div>
 
+    @if($salaries->hasPages())
     <div class="pagination-links">
         {{ $salaries->links() }}
     </div>
+    @endif
 </div>
 @endsection

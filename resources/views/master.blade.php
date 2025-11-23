@@ -67,6 +67,12 @@
                         <span class="sidebar-label">Salary</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url('/projects') }}" class="sidebar-link {{ Request::is('projects*') ? 'active' : '' }}" {!! Request::is('projects*') ? 'aria-current="page"' : '' !!}>
+                        <span class="sidebar-icon material-symbols-outlined">folder_open</span>
+                        <span class="sidebar-label">Project</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 
