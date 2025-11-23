@@ -5,11 +5,12 @@
 <div class="data-container">
     <div class="header-data">
         <h2 class="title-data">Daftar Gaji Karyawan</h2>
-        <a href="{{ route('salaries.create') }}" class="tambah-data material-symbols-outlined">add</a>
+        <a href="{{ route('salaries.create') }}" class="tambah-data material-symbols-outlined"
+            title="Tambah Gaji">add</a>
     </div>
 
     <div class="data-scroll-container">
-        <table class="data-table" style="min-width: 100px;">
+        <table class="data-table">
             <thead>
                 <tr>
                     <th>Karyawan</th>
@@ -21,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($salaries as $salary)
+                @forelse($salaries as $salary)
                 <tr>
                     <td>{{ $salary->employee->nama_lengkap ?? 'N/A' }}</td>
                     <td>{{ $salary->employee->position->nama_jabatan ?? 'N/A' }}</td>
@@ -36,24 +37,32 @@
                             <a href="{{ route('salaries.edit', $salary->id) }}" title="Edit">
                                 <span class="material-symbols-outlined">edit</span>
                             </a>
-                            <form action="{{ route('salaries.destroy', $salary->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('salaries.destroy', $salary->id) }}" method="POST"
+                                style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Yakin ingin menghapus gaji {{ $salary->employee->nama_lengkap }}?')" title="Hapus">
+                                <button type="submit"
+                                    onclick="return confirm('Yakin ingin menghapus gaji {{ $salary->employee->nama_lengkap }}?')"
+                                    title="Hapus">
                                     <span class="material-symbols-outlined">delete</span>
                                 </button>
                             </form>
                         </div>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="6" class="empty-state">Tidak ada data gaji</td>
+                </tr>
+                @endforelse
+            </tbody>
         </table>
     </div>
 
+    @if($salaries->hasPages())
     <div class="pagination-links">
         {{ $salaries->links() }}
     </div>
+    @endif
 </div>
-
-
 @endsection

@@ -3,24 +3,41 @@
 @section('content')
 
 <div class="form-container">
+    <div class="form-header">
+        <h2 class="form-header-title">Edit Departemen</h2>
+        <p class="form-subtitle">Perbarui informasi departemen: {{ $department->nama_departmen }}</p>
+    </div>
 
-    <h2 class="form-header-title">Edit Departemen {{ $department->nama_departmen }}</h2>
-    <form action="{{ route('departments.update', $department->id) }}" method="POST">
+    <form action="{{ route('departments.update', $department->id) }}" method="POST" novalidate>
         @csrf
         @method('PUT')
         <div class="form-grid-layout">
-            <div class="form-group span-2">
-                <label for="nama_departmen">Nama Departemen : </label>
-                <input type="text" id="nama_departmen" name="nama_departmen" value="{{ old('nama_departmen', $department->nama_departmen) }}">
-            </div>
-            <div class="form-group span-2" style="justify-content: flex-end;">
-                <div style="text-align: right;">
-                    <a href="{{ route('departments.index') }}" class="btn-secondary">Kembali</a>
-                    <button type="submit" class="btn-primary">Update</button>
+            <fieldset class="form-section" style="grid-column: span 2;">
+                <legend class="section-title">Informasi Departemen</legend>
+
+                <div class="form-group">
+                    <label for="nama_departmen">Nama Departemen <span class="required">*</span></label>
+                    <input type="text" id="nama_departmen" name="nama_departmen"
+                        value="{{ old('nama_departmen', $department->nama_departmen) }}"
+                        placeholder="Masukkan nama departemen" required
+                        class="@error('nama_departmen') input-error @enderror">
+                    @error('nama_departmen')
+                    <span class="error-message">{{ $message }}</span>
+                    @enderror
                 </div>
+            </fieldset>
+
+            <div class="form-actions span-2" style="grid-column: span 2;">
+                <a href="{{ route('departments.index') }}" class="btn-secondary">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Kembali
+                </a>
+                <button type="submit" class="btn-primary">
+                    <span class="material-symbols-outlined">save</span>
+                    Simpan Perubahan
+                </button>
             </div>
         </div>
     </form>
 </div>
-
 @endsection

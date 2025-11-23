@@ -33,6 +33,13 @@ class Employee extends Model
         return $this->hasMany(Attendance::class, 'karyawan_id');
     }
 
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'project_employee')
+                    ->withPivot('role', 'status', 'joined_at', 'left_at')
+                    ->withTimestamps();
+    }
+
     public function salaries()
     {
         return $this->hasMany(Salary::class, 'karyawan_id');
